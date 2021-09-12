@@ -51,8 +51,18 @@ __使用方法:__
 默认使用的是openmpi的mpirun，如果发现有bug，或者是使用`mpirun -np 1`会把所有任务分配到少数cpu核心上。可以安装mpich的多线程，`sudo apt install mpich`。再修改软链接将mpirun链接到mpich上即可,`sudo ln -s file new_link`。
 ### 3.1.2 安装编译版lammps
 自编译版本lammps可以自选安装某些包，如果上述预编译不满足需求，按以下步骤。
-TO DO
-fftw
+下载压缩包或者直接使用git克隆lammps在github上的repository。
+
+    sudo apt install git
+    git clone -b stable https://github.com/lammps/lammps.git
+    cd lammps
+    mkdir build
+    cmake [option]../cmake
+    cmake --build .
+    make install
+cmake option 从官网查看具体的编译选项。
+
+安装快速傅里叶包fftw
 
     sudo apt install libfftw3-dev
 
