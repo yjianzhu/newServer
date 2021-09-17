@@ -111,6 +111,8 @@ __安装gromacs__
 __修改环境变量__
 在/etc/profile末尾添加：`source /usr/local/gmx2021/bin/GMXRC`
 在命令行执行`source /etc/profile`
+每个用户都要自己执行一次 `source /etc/profile`才可以正确配置gromacs的环境变量
+
 卸载 在gromacs-2021/build/ 目录 `make uninstall`
 
 # 4 连接服务器
