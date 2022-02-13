@@ -74,8 +74,8 @@ __[cuda download guide](https://developer.nvidia.com/cuda-downloads)__
     sudo vim /etc/profile
 将
 
-    export PATH=/usr/local/cuda-11.4/bin${PATH:+:${PATH}}
-    export LD_LIBRARY_PATH=/usr/local/cuda-11.4/lib64\${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+    export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}
+    export LD_LIBRARY_PATH=/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 这两行添加到文件末尾。保存退出后
 `source /etc/profile`
 完成上述操作，使用`nvcc -V`查看cuda版本号。
@@ -99,7 +99,7 @@ __安装gromacs__
 
     cd build
 
-    cmake .. -DGMX_BUILD_OWN_FFTW=ON -DGMX_GPU=CUDA -DCUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda-11.4 \
+    cmake .. -DGMX_BUILD_OWN_FFTW=ON -DGMX_GPU=CUDA -DCUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda-11.5 \
     -DCMAKE_INSTALL_PREFIX=/usr/local/gmx2021  
 
     make
@@ -126,6 +126,7 @@ __修改环境变量__
 基于公私钥登录的服务器更安全。
 
 ### 4.2 使用虚拟显示器
+##### 直接使用显卡诱骗器解决更方便
 重启后如不连接显示器，默认是无法使用anydesk等远程桌面软件。
 建立虚拟显示器可以解决此问题。
 
@@ -157,3 +158,26 @@ __修改环境变量__
         ModeLine "1920x1080" 148.50 1920 2448 2492 2640 1080 1084 1089 1125 +Hsync +Vsync
     EndSection
 重启机器`sudo reboot`
+
+
+# 5 挂载硬盘
+
+### 5.1 挂载已经有数据的磁盘
+
+    sudo fdisk -l 
+    mkdir your_dir_name
+    sudo mount /dev/sda1 your_dir_name
+
+使用第一条命令查看磁盘以及分区情况，例如`/dev/sda1`是`/dev/sda`这个磁盘的第一个分区。上面的命令把他挂载在你创建的文件夹下。
+
+### 5.2 挂载新磁盘
+
+    sudo fdisk -l
+    sudo fdisk /dev/sda ##这里/sda是未分区的新硬盘,按m查看帮助，g创建gpt label，按n创建新的分区
+    sudo mkfs.ext4 /dev/sda1 ## 将刚刚创建的分区格式化并创建ext4格式
+    sudo mount /dev/sda1 your_dir_name
+    
+设置开机挂载 
+
+    sudo vim /etc/fstab
+    /dev/sda1  /sec1   ext4 defaults 0 0
