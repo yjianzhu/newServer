@@ -181,3 +181,14 @@ __修改环境变量__
 
     sudo vim /etc/fstab
     /dev/sda1  /sec1   ext4 defaults 0 0
+
+
+### 6 设置ssh port
+
+默认端口是22，cityu1,2,3的22端口是开放的。其余端口不对公网开放。
+
+    sudo vim /etc/ssh/sshd_config
+    Port 100
+退出并重启sshd
+
+    sudo systemctl restart sshd.service
