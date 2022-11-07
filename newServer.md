@@ -159,6 +159,12 @@ __修改环境变量__
     EndSection
 重启机器`sudo reboot`
 
+### 4.3 安装anydesk
+
+    sudo dpkg -i anydesk.deb
+    sudo apt --fix-broken install
+    sudo echo   <password>  | anydesk --set-password
+如果上面的设置出错，使用`sudo -i`进入root重新设置。
 
 # 5 挂载硬盘
 
