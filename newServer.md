@@ -195,6 +195,12 @@ __修改环境变量__
 
     sudo vim /etc/ssh/sshd_config
     Port 100
+
+关闭password登录，保证用密钥登陆，更安全
+    sudo vim /etc/ssh/sshd_config
+    PasswordAuthentication no
+    
 退出并重启sshd
 
     sudo systemctl restart sshd.service
+

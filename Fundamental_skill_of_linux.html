@@ -278,8 +278,10 @@ pre[data-line] .line-highlight[data-end]:after {
 <p><code>env</code> see the system path. All packages or executable file in path can be executed directly. Others must be executed by <code>./</code> and the absolute path.such as <code>./home/yongjian/execute/MC_multi_chian</code>.</p>
 <p>type <code>env</code> or <code>echo $PATH</code>, you&apos;ll see<br>
 <img src="image/path.jpg"></p>
-<p>Every user has himself PATH, there are two methods.<code>/etc/profile</code> for all user, <code>/home/${yourself}/.bashrc</code> for one user.</p>
-<p><code>source /etc/profile</code> or <code>source /home/${yourself}/.bashrc</code> to refresh path. <strong>SECURITY FIRST</strong></p>
+<p>Every user has himself PATH, there are two methods. Modify <code>/etc/profile</code> for all user, <code>/home/${yourself}/.bashrc</code> for one user.</p>
+<p><code>source /etc/profile</code> or <code>source /home/${yourself}/.bashrc</code> to refresh path.<br>
+<img src="image/profile.jpg"><br>
+<strong>SECURITY FIRST</strong></p>
 <h3 class="mume-header" id="21-whereis-and-aptadvanced-packaging-tool">2.1 whereis and apt(Advanced Packaging Tool)</h3>
 
 <p>Most fundamental applications can be found in  <code>/usr/bin</code>, such as <code>python</code>,<code>mpirun</code>.  If you want to use parallel computing, you can type <code>whereis mpirun</code>.<br>
@@ -291,6 +293,12 @@ Different color means different file types.<br>
 <p>Use <code>apt</code> install software or depends if there is.</p>
 <p>fftw3 is a fundamental scientific computing library, <code>sudo apt install fftw3</code> is your better choice.</p>
 <p><strong>I don&apos;t think that compiling every lib or application yourself is OK</strong></p>
+<h2 class="mume-header" id="3-simulation-softwares">3 Simulation Softwares</h2>
+
+<p>Lammps and Gromacs are installed in most machine, if you type <code>whereis lmp_stable</code> or <code>whereis lmp</code> or <code>whereis gmx</code> and don&apos;t find them, follow the installation on their official website.(some online tutorial maybe out of date)</p>
+<h2 class="mume-header" id="4-file-system-and-mount">4 File system and mount</h2>
+
+<p>chown chmod mount</p>
 </font>
       </div>
       
