@@ -69,6 +69,7 @@ cmake option 从官网查看具体的编译选项。
 ### 3.2 安装显卡驱动以及cuda
 
 __[cuda download guide](https://developer.nvidia.com/cuda-downloads)__
+__[cuda toolkit archive](https://developer.nvidia.com/cuda-toolkit-archive)__
 按照官网的安装后，需要修改环境变量，将cuda目录加到path里。
 
     sudo vim /etc/profile
