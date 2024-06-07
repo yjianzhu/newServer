@@ -81,6 +81,27 @@ __[cuda toolkit archive](https://developer.nvidia.com/cuda-toolkit-archive)__
 `source /etc/profile`
 完成上述操作，使用`nvcc -V`查看cuda版本号。
 
+#### 3.2.1 driver mismatch
+
+__[nvidia driver mismatch](https://stackoverflow.com/questions/43022843/nvidia-nvml-driver-library-version-mismatch)__
+
+如果出现driver mismatch错误，列出所有模块，
+
+    lsmod | grep nvidia
+
+卸载所有模块
+    
+    sudo rmmod nvidia_drm nvidia_modeset nvidia
+
+如果不能解决，重启电脑。
+
+__关闭自动更新__
+
+    sudo apt-mark hold nvidia-dkms-version_number
+    sudo apt-mark hold nvidia-driver-version_number
+    sudo apt-mark hold nvidia-utils-version_number
+
+
 ### 3.3 安装gmx以及添加环境变量
 GROMACS 官方只提供源码，需要使用cmake自行编译。apt包管理的gromacs版本过旧且无法使用gpu加速。因此按照以下命令逐行输入：
 __安装cmake 3.x__
@@ -204,4 +225,3 @@ __修改环境变量__
 退出并重启sshd
 
     sudo systemctl restart sshd.service
-
